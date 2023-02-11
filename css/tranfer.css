@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: "Comfortaa";
+  font-size: 15px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+
+.col-left {
+  background-color: #5d17eb;
+  flex: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+.col-right {
+  background-color: #fff; /* #324d5d; */
+  flex: 35%;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.right-box {
+  text-align: center;
+}
+.left-box {
+  text-align: center;
+
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roomcode-box {
+  margin-top: 15px;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
+  border-radius: 10px;
+}
+.roomcode-box > input {
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid #5d17eb;
+  background-color: #5d17eb;
+  border-radius: 5px;
+  color: gold;
+  font-weight: 800;
+  font-size: 12px;
+  width: 80%;
+}
+#fileinput {
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border: 1px solid white;
+  flex: 1;
+  opacity: 0;
+}
+#drop_zone {
+  position: relative;
+  background-color: black;
+  border: 5px dashed white;
+  width: 50vw;
+  height: 50vh;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+#sendFileBtn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: gold;
+  color: black;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #324d5d;
+  display: block;
+  margin: 5px;
+  width: 50%;
+  font-weight: bolder;
+}
+#sendFileBtn:hover {
+  background-color: orange;
+}
+#drop_zone_text {
+  position: relative;
+  top: 0;
+  left: 0;
+  color: gold;
+}
+/* .drop-area {
+} */
+.fileprogress-box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: black;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border-radius: 25px;
+}
+.progress {
+  margin-top: 5px;
+  font-size: 55px;
+  color: #5d17eb;
+  font-weight: bold;
+}
+.progress-bar {
+  border: 1px solid white;
+  border-radius: 25px;
+}
+.progress-bar-fill {
+  background-color: green;
+  width: 0%;
+  height: 25px;
+  border-radius: 25px;
+}
+.stats-area {
+  display: none;
+  width: 50vw;
+}
+.info-box {
+  background-color: black;
+  border-radius: 10px;
+  color: aquamarine;
+  font-size: 12px;
+  padding: 4px;
+  margin: 5px;
+}
+#filename-text {
+  color: white;
+}
+msglist > a {
+  font-size: 10px;
+  text-decoration: none;
+  color: lightcoral;
+  display: block;
+}
+msglist {
+  height: 100px;
+  overflow: scroll;
+  padding: 5px;
+  margin-bottom: 10px;
+}
