@@ -8,7 +8,6 @@ $(document).ready(function(){
   $("input[type='file']").change(function(){
     var files = $(this)[0].files;
     console.log("File selected!");
-    handleToast(files);
   });
 });
 // When the user clicks on <span> (x), close the modal
