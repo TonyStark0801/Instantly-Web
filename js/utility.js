@@ -62,6 +62,7 @@ $("#scanQR").click(function (e) {
 
 function onScanSuccess(decodedText, decodedResult) {
   console.log(`Code scanned = ${decodedText}`, decodedResult);
+  window.location.href=decodedText;
   html5QrcodeScanner.clear();
 }
 
