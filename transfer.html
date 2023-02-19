@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instantly - Internet Share</title>
+    <link rel="icon" type="image/x-icon" href="./img/icon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+
+    <!-- bootstrap css CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./css/transfer.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <noscript
+      style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #333;
+        padding: 1rem;
+        z-index: 999;
+        text-align: center;
+      "
+      ><h1 style="font-size: 24px; color: #fff; margin: 0; margin-bottom: 1rem">
+        Oops!
+      </h1>
+      <span>you need to enable javascript to use Instantly.</span></noscript
+    >
+    <script>
+      function getParameterByName(name, url = window.location.href) {
+        if (
+          typeof URLSearchParams === "undefined" ||
+          typeof URL === "undefined"
+        ) {
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return "";
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        } else {
+          const searchParams = new URLSearchParams(new URL(url).search);
+          return searchParams.get(name) || null;
+        }
+      }
+      var room_id;
+      if (getParameterByName("room_id") == undefined) {
+        room_id = (Math.random() + 1).toString(36).substring(2);
+        window.location.href = window.location.href + "?room_id=" + room_id;
+      } else room_id = getParameterByName("room_id");
+    </script>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
+      <div class="container px-5">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="./img/navLogo.jpg"
+            alt="Instantly Logo"
+            width="125px"
+            height="39px"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+            <li class="nav-item">
+              <a class="nav-link me-lg-3" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a
+            class="nav-link me-lg-3"
+            href="https://github.com/TonyStark0801/Instantly/releases/download/Stable/Instantly.apk"
+            role="button">Download</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container-fluid text-center bg-gradient-primary-to-secondary overflow-x-auto overflow-y-auto " style="width: 100%; height: 76%"
+    >
+      <div class="row flex flex-wrap" style="width: 100%; height: 100%" id="mainRow">
+        <!-- left column -->
+        <div class="col-6 col-xs-12">
+          <!-- Generate QR code Modal -->
+          <div
+            class="modal fade"
+            id="modalGet"
+            tabindex="-1"
+            aria-labelledby="modalGetLabel"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-dialog-centered"
+              style="width: max-content"
+            >
+              <div class="modal-content">
+                <div class="modal-body" id="qrcode"></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary mx-auto"
+                    id="spanGet"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- toast -->
+          <div
+            id="sendFileToast"
+            class="toast align-items-center text-bg-primary border-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="d-flex">
+              <div class="toast-body"></div>
+              <button
+                type="button"
+                class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+          <!-- waiting area -->
+          <div class="d-flex align-items-center h-100">
+            <div class="waiting-area mx-auto justify-content-center text-center">
+              <h2 class="text-white">Waiting for Peer</h2>
+              <img src="./img/waitingForPeer.gif" alt="Waiting for Peer" />
+            </div>
+          </div>
+
+          <!-- dropzone -->
+          <div class="container h-100 d-flex flex-column align-items-center hidden" id="drop-zone">
+            <div class="dropzone text-center mx-auto">
+              <h3 class="text-muted p-3" style="font-size: 1.9rem">
+                Drag and drop files here
+              </h3>
+              
+              <p class="text-muted p-3">or</p>
+              <label for="file-input" class="btn btn-lg btn-outline-primary">
+                Select Files
+              </label>
+              <input
+                id="file-input"
+                type="file"
+                style="display: none"
+              />
+            </div>
+            <div class="d-flex justify-content-center mt-3 text-center">
+              <button id="sendFileBtn" type="button" class="btn btn-primary btn-lg">Send</button>
+            </div>
+          </div>
+
+          <!-- progress -->
+          <div class="stats-area display-6 mb-2 mt-2 hidden" style="font-family: Roboto; color: white;">0%</div>
+          
+        </div>
+        <!-- right column -->
+        <div class="col-6 col-xs-12">
+          <div class="d-flex flex-column">
+            <!-- Room link -->
+            <div class="d-inline-flex justify-content-center h-100" style="width: 90%; margin-left: 5%">
+              <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#panelsStayOpen-collapseOne"
+                      aria-expanded="true"
+                      aria-controls="panelsStayOpen-collapseOne"
+                    >
+                      Room Link &nbsp;&nbsp;&nbsp;
+                    </button>
+                  </h2>
+                  <div
+                    id="panelsStayOpen-collapseOne"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne"
+                  >
+                    <div class="accordion-body" id="accordionBody">
+                      <input
+                        type="text"
+                        id="room_id"
+                        placeholder="Enter Room Link"
+                        class="bg-gradient-primary-to-secondary"
+                      />
+                      <button id="copy" class="btn btn-outline-primary">
+                        Copy
+                      </button>
+                      <button
+                        id="getQR"
+                        class="btn btn-outline-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalGet"
+                      >
+                        Get QR
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Peer info -->
+            <div class="container mt-3">
+              <table
+                class="table table-responsive table-bordered table-striped table-dark table-hover"
+              >
+                <tbody>
+                  <tr>
+                    <th scope="row">Peer ID</th>
+                    <td id="mypeerid"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Connected Peer ID</th>
+                    <td id="peer2"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer-->
+    <footer class="bg-black text-center py-1">
+      <div class="container px-5">
+        <div class="text-white-50 small">
+          <a href="https://github.com/TonyStark0801/Instantly"> <i class="bi-github text-gradient d-block" style="font-size:3rem;"></i></a>
+          <div class="mb-2">&copy; Instantly 2023. All Rights Reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAE7inEQPaHGgsnMx2CUrrlGRTpbip7RE0",
+        authDomain: "webch-9ddf2.firebaseapp.com",
+        databaseURL: "https://webch-9ddf2.firebaseio.com",
+        projectId: "webch-9ddf2",
+        storageBucket: "webch-9ddf2.appspot.com",
+        messagingSenderId: "884619352461",
+        appId: "1:884619352461:web:736f9656b77169ea6105c4",
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      // Initialize Realtime Database and get a reference to the service
+      const database = firebase.database();
+    </script>
+    <script>
+      $("#room_id").val(
+        location.origin + location.pathname + "?room_id=" + room_id
+      );
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="./js/utility.js"></script>
+    <script type="module" src="./js/peerConnection.js"></script>
+    <script type="module" src="./js/firebaseSignalingServer.js"></script>
+
+    <script type="module" src="./js/fileHandling.js"></script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>

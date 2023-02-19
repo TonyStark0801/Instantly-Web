@@ -2489,7 +2489,7 @@ textarea.form-control-lg {
      -moz-appearance: none;
           appearance: none;
   -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+          print-color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
@@ -11394,7 +11394,7 @@ section {
 
 .device[data-device=iPhoneX][data-orientation=portrait][data-color=black]::after {
   content: "";
-  background-image: url("../assets/img/portrait_black.png");
+  background-image: url("../img/portrait_black.png");
 }
 
 .device[data-device=iPhoneX][data-orientation=portrait][data-color=black] .button {
