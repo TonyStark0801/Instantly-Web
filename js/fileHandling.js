@@ -8,6 +8,7 @@ function sendMsg(msg) {
 let file_size;
 let file_name;
 $("#sendFileBtn").click(function () {
+  $("#sendFileBtn").removeClass("vibrate-3");
   var file = document.getElementById("file-input").files[0];
   file_name = file.name;
   file_size = file.size;

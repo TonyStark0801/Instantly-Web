@@ -4,6 +4,7 @@ var qrcode;
 $(document).ready(function(){
   $("input[type='file']").change(function(){
     var files = $(this)[0].files;
+    $("#selectFile").removeClass("pulsate-fwd");
     handleToast(files);
   });
 });
@@ -12,8 +13,12 @@ $modalGet.on('hidden.bs.modal', function (e) {
 });
 
 $("#copy").click(function (e) {
+  $("#copy").addClass("blink-2");
   $("#room_id").select();
   document.execCommand("copy");
+  setTimeout(() => {
+    $("#copy").removeClass("blink-2");
+  }, 1000);
 });
 
 $("#getQR").click(function (e) {
@@ -36,6 +41,7 @@ function handleToast(files) {
   }
   const toast = new bootstrap.Toast($('#sendFileToast'));
   toast.show();
+  $("#sendFileBtn").addClass("vibrate-3");
 }
 
 $dropzone.on("dragover", function(e) {

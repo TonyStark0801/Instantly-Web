@@ -37,6 +37,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="./css/transfer.css" />
+    <link rel="stylesheet" href="./css/animate.css" />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -189,7 +190,7 @@
               </h3>
               
               <p class="text-muted p-3">or</p>
-              <label for="file-input" class="btn btn-lg btn-outline-primary">
+              <label for="file-input" id="selectFile" class="btn btn-lg btn-outline-primary pulsate-fwd">
                 Select Files
               </label>
               <input
@@ -204,7 +205,7 @@
           </div>
 
           <!-- progress -->
-          <div class="stats-area display-6 mb-2 mt-2 hidden" style="font-family: Roboto; color: white;">0%</div>
+          <div class="stats-area display-6 mb-2 mt-2 hidden scale-down-center" style="font-family: Roboto; color: white;">0%</div>
           
         </div>
         <!-- right column -->

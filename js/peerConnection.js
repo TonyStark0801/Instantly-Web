@@ -33,6 +33,7 @@ peer.on("connection", function (conn) {
       console.log("Sent Data feedback", data.msg);
       if (data.msg === 100) {
       $('.stats-area').html("Done!");
+      $("#selectFile").addClass("pulsate-fwd");
       }
       else {
         $('.stats-area').html(data.msg + "%");

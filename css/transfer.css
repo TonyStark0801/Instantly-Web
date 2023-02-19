@@ -133,12 +133,3 @@ footer a:hover, footer a:active, footer a:focus {
   margin-top: 1.5rem;
   }
 }
-
-/* @media screen and (max-width: 575px) {
-  #drop-zone, 
-  .waiting-area {
-    position: relative;
-    left: 50%;
-  }
-
-} */
