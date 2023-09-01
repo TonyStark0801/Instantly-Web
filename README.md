@@ -12,7 +12,7 @@ Instantly-Web is a freeware, serverless, peer-to-peer file transfer web applicat
 
 
 ## Getting Started
-You can access the web application on your browser through this URL: https://instantly-web.vercel.app. 
+You can access the web application on your browser through this URL: [https://instantly-transfer.vercel.app](https://instantly-transfer.vercel.app/). 
 
 To establish a connection, the user can either copy and share a room link or get a QR code, which can be scanned through any scanner or the Instantly Android app. Once the link is entered into the browser, the connection is established, and the user can select or drop a file in the dropzone and click on the send button to begin the transfer.
 
